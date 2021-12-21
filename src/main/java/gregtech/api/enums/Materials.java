@@ -602,6 +602,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials LifeEssence               = new MaterialBuilder(694, TextureSet.SET_FLUID      ,                                                                                                     "Life").setName("lifeessence").addCell().addFluid().setFuelPower(100).setFuelType(5).setRGB(110, 3, 3).setColor(Dyes.dyeRed).setMaterialList().constructMaterial();
 
     public static Materials SolderingAlloy          = new Materials( 314, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2                       , 220, 220, 230,   0,   "SolderingAlloy"          ,   "Soldering Alloy"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(Tin, 9), new MaterialStack(Antimony, 1)));
+    public static Materials SolderingAlloyMK2       = new Materials( 314, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2                       , 220, 220, 230,   0,   "SolderingAlloyMK2"          ,   "Soldering Alloy MK2"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloy, 1), new MaterialStack(Indium, 1)));
     public static Materials GalliumArsenide         = new Materials( 980, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2                       , 160, 160, 160,   0,   "GalliumArsenide"         ,   "Gallium Arsenide"              ,    0,       0,         -1, 1200,  true, false,   1,   1,   1, Dyes.dyeGray        , 2, Arrays.asList(new MaterialStack(Arsenic, 1), new MaterialStack(Gallium, 1)));
     public static Materials IndiumGalliumPhosphide  = new Materials( 981, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2                       , 160, 140, 190,   0,   "IndiumGalliumPhosphide"  ,   "Indium Gallium Phosphide"      ,    0,       0,         -1,    0, false, false,   1,   1,   1, Dyes.dyeLightGray   , 2, Arrays.asList(new MaterialStack(Indium, 1), new MaterialStack(Gallium, 1), new MaterialStack(Phosphorus, 1)));
     public static Materials Spessartine             = new Materials( 838, TextureSet.SET_DULL              ,   1.0F,      0,  2, 1    |8                   , 255, 100, 100,   0,   "Spessartine"             ,   "Spessartine"                   ,    0,       0,         -1,    0, false, false,   3,   1,   1, Dyes.dyeRed         , 0, Arrays.asList(new MaterialStack(Aluminium, 2), new MaterialStack(Manganese, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12)));
@@ -906,6 +907,8 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     @Deprecated
     public static Materials Phosphor = new Materials(Phosphorus, false);
     private static Materials[] MATERIALS_ARRAY = new Materials[]{};
+    // SOLDERING_MAP -> lists all soldering alloy materials and their soldering alloy tier
+    private static Map<Materials, Float> SOLDERING_MAP = new HashMap<Materials, Float>();
 
     static {
         initSubTags();
@@ -1836,6 +1839,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
                 NiobiumTitanium,
                 PigIron,
                 SolderingAlloy,
+                SolderingAlloyMK2,
                 StainlessSteel,
                 Steel,
                 Ultimet,
@@ -1961,9 +1965,16 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         NitroFuel.add(SubTag.FLAMMABLE, SubTag.EXPLOSIVE, SubTag.NO_SMELTING, SubTag.NO_SMASHING);
         NitroCarbon.add(SubTag.FLAMMABLE, SubTag.EXPLOSIVE, SubTag.NO_SMELTING, SubTag.NO_SMASHING);
 
-        Lead.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL, SubTag.SOLDERING_MATERIAL_BAD);
+		// @MJL@ I can't be bothered to do this in any different way
+    	// add soldering alloys
+        Lead.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
+        SOLDERING_MAP.put(Lead, 0.3f);
         Tin.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
-        SolderingAlloy.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL, SubTag.SOLDERING_MATERIAL_GOOD);
+        SOLDERING_MAP.put(Tin, 0.7f);
+        SolderingAlloy.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
+        SOLDERING_MAP.put(SolderingAlloy, 1.0f);
+        SolderingAlloyMK2.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
+        SOLDERING_MAP.put(SolderingAlloyMK2, 2.0f);
 
         Cheese.add(SubTag.SMELTING_TO_FLUID);
         Sugar.add(SubTag.SMELTING_TO_FLUID);
@@ -2362,6 +2373,13 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
      */
     public static Materials[] values() {
         return MATERIALS_ARRAY;
+    }
+
+    /**
+     * This is for keeping compatibility with addons mods (Such as TinkersGregworks etc) that looped over the old materials enum
+     */
+    public static Map<Materials, Float> soldering_alloys() {
+        return SOLDERING_MAP;
     }
 
     /**

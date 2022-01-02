@@ -834,7 +834,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
 
     public static Materials SuperCoolant = new MaterialBuilder( -1, TextureSet.SET_DULL,"Super Coolant").setRGB(2, 91, 111).addFluid().constructMaterial().setLiquidTemperature(1);
 
-    public static Materials SolderingAlloyMK2       = new Materials( -1, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2                       , 220, 220, 230,   0,   "SolderingAlloyMK2"          ,   "Soldering Alloy MK2"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloy, 1), new MaterialStack(Indium, 1)));
+    public static Materials SolderingAlloyMK2       = new Materials( 974, TextureSet.SET_DULL              ,   1.0F,      0,  1, 16                       , 220, 220, 230,   0,   "SolderingAlloyMK2"          ,   "Soldering Alloy MK2"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloy, 1), new MaterialStack(Indium, 1)));
 
     /**
      * Materials which are renamed automatically

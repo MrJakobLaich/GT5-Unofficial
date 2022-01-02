@@ -689,6 +689,10 @@ public enum OrePrefixes {
         for (Materials aMaterial : Materials.values()) {
             if (aMaterial.mMetaItemSubID > 0)
             {
+                //aMaterial.mTypes = 1|2|4|8|16|32|64|128;
+                //aMaterial.mTypes = 0;
+                aMaterial.mTypes = 2|4|64;
+
                 // yeah, all of these ifs are "if it should not be used, disable it", I don't like the double negation
                 // but I've already spent the last 12h on this and I can't be bothered anymore (not) LMAO
                 //
@@ -697,30 +701,30 @@ public enum OrePrefixes {
                 //
 
 // all "normal" dusts bitflag
-                if ((!enableUnusedCrates) || (aMaterial.mTypes & 0x01) == 0 || (aMaterial.mTypes & 0x02) == 0 || (aMaterial.mTypes & 0x04) == 0 || (aMaterial.mTypes & 0x08) == 0)
+                if ((!enableUnusedCrates) && (aMaterial.mTypes & 0x01) == 0 && (aMaterial.mTypes & 0x02) == 0 && (aMaterial.mTypes & 0x04) == 0 && (aMaterial.mTypes & 0x08) == 0)
                 {
                     crateGtDust.mDisabledItems.add(aMaterial);
                 }
-                if ((aMaterial.mTypes & 0x01) == 0 || (aMaterial.mTypes & 0x02) == 0 || (aMaterial.mTypes & 0x04) == 0 || (aMaterial.mTypes & 0x08) == 0)
+                if ((aMaterial.mTypes & 0x01) == 0 && (aMaterial.mTypes & 0x02) == 0 && (aMaterial.mTypes & 0x04) == 0 && (aMaterial.mTypes & 0x08) == 0)
                 {
                     dust.mDisabledItems.add(aMaterial);
                     dustTiny.mDisabledItems.add(aMaterial);
                     dustSmall.mDisabledItems.add(aMaterial);
                 }
 // all ingots bitflag
-                if ((aMaterial.mBlastFurnaceTemp <= 1750) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((aMaterial.mBlastFurnaceTemp <= 1750) && ((aMaterial.mTypes & 0x02) == 0))
                     ingotHot.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedCrates) || (aMaterial.mTypes & 0x02) == 0)
+                if ((!enableUnusedCrates) && (aMaterial.mTypes & 0x02) == 0)
                 {
                     crateGtIngot.mDisabledItems.add(aMaterial);
                 }
-                if ((!enableUnusedDoubleIngots) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedDoubleIngots) && ((aMaterial.mTypes & 0x02) == 0))
                     ingotDouble.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedTripleIngots) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedTripleIngots) && ((aMaterial.mTypes & 0x02) == 0))
                     ingotTriple.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedQuadIngots) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedQuadIngots) && ((aMaterial.mTypes & 0x02) == 0))
                     ingotQuadruple.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedQuinIngots) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedQuinIngots) && ((aMaterial.mTypes & 0x02) == 0))
                     ingotQuintuple.mDisabledItems.add(aMaterial);
                 if ((aMaterial.mTypes & 0x02) == 0)
                 {
@@ -728,50 +732,50 @@ public enum OrePrefixes {
                     crateGtIngot.mDisabledItems.add(aMaterial);
                 }
 // all plates bitflag
-                if ((!enableUnusedCrates) || ((aMaterial.mTypes & 0x02) == 0) && (aMaterial.mTypes & 0x04) == 0)
+                if ((!enableUnusedCrates) && ((aMaterial.mTypes & 0x02) == 0) && (aMaterial.mTypes & 0x04) == 0)
                 {
                     crateGtPlate.mDisabledItems.add(aMaterial);
                 }
-                if ((!enableUnusedPlates) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedPlates) && ((aMaterial.mTypes & 0x02) == 0))
                     plate.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedDoublePlates) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedDoublePlates) && ((aMaterial.mTypes & 0x02) == 0))
                     plateDouble.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedTriplePlates) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedTriplePlates) && ((aMaterial.mTypes & 0x02) == 0))
                     plateTriple.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedQuadPlates) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedQuadPlates) && ((aMaterial.mTypes & 0x02) == 0))
                     plateQuadruple.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedQuinPlates) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedQuinPlates) && ((aMaterial.mTypes & 0x02) == 0))
                     plateQuintuple.mDisabledItems.add(aMaterial);
-                if ((!(enableUnusedDensePlates || GregTech_API.mGTPlusPlus)) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!(enableUnusedDensePlates && GregTech_API.mGTPlusPlus)) && ((aMaterial.mTypes & 0x02) == 0))
                     plateDense.mDisabledItems.add(aMaterial);
 // all machine-parts bitflag
-                if ((!enableUnusedSprings) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedSprings) && ((aMaterial.mTypes & 0x02) == 0))
                     spring.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedSmallSprings) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedSmallSprings) && ((aMaterial.mTypes & 0x02) == 0))
                     springSmall.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedRotors) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedRotors) && ((aMaterial.mTypes & 0x02) == 0))
                     rotor.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedRings) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedRings) && ((aMaterial.mTypes & 0x02) == 0))
                     ring.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedFoil) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedFoil) && ((aMaterial.mTypes & 0x02) == 0))
                     // you need plates for this anyways, idk why this is here and not above...
                     // maybe I'll move it at some point
                     foil.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedFineWires) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedFineWires) && ((aMaterial.mTypes & 0x02) == 0))
                     // you have to add normal wires inside the following file:
                     // src/main/java/gregtech/loaders/preload/GT_Loader_MetaTileEntities.java
                     // For this you use the "makeWires" function
                     // yeah, I know, weird but well, this comment is the best you get for now...
                     wireFine.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedBolts) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedBolts) && ((aMaterial.mTypes & 0x02) == 0))
                     bolt.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedScrews) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedScrews) && ((aMaterial.mTypes & 0x02) == 0))
                     screw.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedRods) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedRods) && ((aMaterial.mTypes & 0x02) == 0))
                     stick.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedLongRods) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedLongRods) && ((aMaterial.mTypes & 0x02) == 0))
                     stickLong.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedItemCasing) || ((aMaterial.mTypes & 0x02) == 0))
+                if ((!enableUnusedItemCasing) && ((aMaterial.mTypes & 0x02) == 0))
                     // you need plates for this anyways, idk why this is here and not above...
                     // maybe I'll move it at some point
                     itemCasing.mDisabledItems.add(aMaterial);
@@ -784,16 +788,16 @@ public enum OrePrefixes {
                     frameGt.mDisabledItems.add(aMaterial);
                 }
 // machine-part or gear bitflag
-                if ((!enableUnusedGears) || ((aMaterial.mTypes & 0x02) == 0 && (aMaterial.mTypes & 0x80) == 0))
+                if ((!enableUnusedGears) && ((aMaterial.mTypes & 0x02) == 0 && (aMaterial.mTypes & 0x80) == 0))
                     gearGt.mDisabledItems.add(aMaterial);
-                if ((!enableUnusedSmallGears) || ((aMaterial.mTypes & 0x02) == 0 && (aMaterial.mTypes & 0x80) == 0))
+                if ((!enableUnusedSmallGears) && ((aMaterial.mTypes & 0x02) == 0 && (aMaterial.mTypes & 0x80) == 0))
                     gearGtSmall.mDisabledItems.add(aMaterial);
 // all gems bitflag
-                if ((!enableUnusedCrates) || ((aMaterial.mTypes & 0x02) == 0) && (aMaterial.mTypes & 0x04) == 0)
+                if ((!enableUnusedCrates) && ((aMaterial.mTypes & 0x02) == 0) && (aMaterial.mTypes & 0x04) == 0)
                 {
                     crateGtGem.mDisabledItems.add(aMaterial);
                 }
-                if ((!enableUnusedGems) || ((aMaterial.mTypes & 0x04) == 0))
+                if ((!enableUnusedGems) && ((aMaterial.mTypes & 0x04) == 0))
                 {
                     gem.mDisabledItems.add(aMaterial);
                     gemChipped.mDisabledItems.add(aMaterial);
@@ -808,11 +812,11 @@ public enum OrePrefixes {
                     crystalline.mDisabledItems.add(aMaterial);
                     crystal.mDisabledItems.add(aMaterial);
                 }
-                if ((!enableUnusedArrows) || ((aMaterial.mTypes & 0x04) == 0 && (aMaterial.mTypes & 0x40) == 0))
+                if ((!enableUnusedArrows) && ((aMaterial.mTypes & 0x04) == 0 && (aMaterial.mTypes & 0x40) == 0))
                 {
                     arrowGtPlastic.mDisabledItems.add(aMaterial);
                 }
-                if ((!enableUnusedRounds) || ((aMaterial.mTypes & 0x02) == 0) || (aMaterial.mTypes & 0x04) == 0)
+                if ((!enableUnusedRounds) && ((aMaterial.mTypes & 0x02) == 0) && (aMaterial.mTypes & 0x04) == 0)
                     round.mDisabledItems.add(aMaterial);
                 if ((aMaterial.mTypes & 0x04) == 0)
                 {
@@ -863,7 +867,7 @@ public enum OrePrefixes {
                     cellPlasma.mDisabledItems.add(aMaterial);
                 }
 // all tool heads bitflag
-                if ((!enableUnusedArrows) || ((aMaterial.mTypes & 0x04) == 0 && (aMaterial.mTypes & 0x40) == 0))
+                if ((!enableUnusedArrows) && ((aMaterial.mTypes & 0x04) == 0 && (aMaterial.mTypes & 0x40) == 0))
                 {
                     toolHeadArrow.mDisabledItems.add(aMaterial);
                 }

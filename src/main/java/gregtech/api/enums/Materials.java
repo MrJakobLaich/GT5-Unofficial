@@ -628,8 +628,11 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials IronIIIChloride           = new MaterialBuilder(693, TextureSet.SET_FLUID      ,                                                                                                     "Iron III Chloride").setName("IronIIIChloride").addCell().addFluid().setRGB(22, 21, 14).setColor(Dyes.dyeBlack).setMaterialList(new MaterialStack(Chlorine, 3), new MaterialStack(Iron, 1)).addElectrolyzerRecipe().constructMaterial();
     public static Materials LifeEssence               = new MaterialBuilder(694, TextureSet.SET_FLUID      ,                                                                                                     "Life").setName("lifeessence").addCell().addFluid().setFuelPower(100).setFuelType(5).setRGB(110, 3, 3).setColor(Dyes.dyeRed).setMaterialList().constructMaterial();
 
-    public static Materials SolderingAlloy          = new Materials( 314, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 220, 220, 230,   0,   "SolderingAlloy"          ,   "Soldering Alloy"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(Tin, 9), new MaterialStack(Antimony, 1)));
-    public static Materials SolderingAlloyMK2       = new Materials( 480, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 220, 220, 230,   0,   "SolderingAlloyMK2"          ,   "Soldering Alloy MK2"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloy, 1), new MaterialStack(Indium, 1)));
+    public static Materials SolderingAlloy          = new Materials( 314, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 50, 220, 255,   0,   "SolderingAlloy"          ,   "Soldering Alloy"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(Tin, 9), new MaterialStack(Antimony, 1)));
+    public static Materials SolderingAlloyMK2       = new Materials( 450, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 150, 220, 220,   0,   "SolderingAlloyMK2"          ,   "Soldering Alloy MK2"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloy, 1), new MaterialStack(Indium, 1)));
+    public static Materials SolderingAlloyMK3       = new Materials( 451, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 150, 150, 150,   60,   "SolderingAlloyMK3"          ,   "Soldering Alloy MK3"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloyMK2, 1), new MaterialStack(SolderingAlloy, 1)));
+    public static Materials SolderingAlloyMK4       = new Materials( 452, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 220, 220, 150,   120,   "SolderingAlloyMK4"          ,   "Soldering Alloy MK4"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloyMK3, 1), new MaterialStack(SolderingAlloyMK2, 1)));
+    public static Materials SolderingAlloyMK5       = new Materials( 453, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 255, 150, 50,   180,   "SolderingAlloyMK5"          ,   "Soldering Alloy MK5"               ,    0,       0,        400,  400, false, false,   1,   1,   1, Dyes.dyeWhite       , 2, Arrays.asList(new MaterialStack(SolderingAlloyMK4, 1), new MaterialStack(SolderingAlloyMK3, 1)));
     public static Materials GalliumArsenide         = new Materials( 980, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 160, 160, 160,   0,   "GalliumArsenide"         ,   "Gallium Arsenide"              ,    0,       0,         -1, 1200,  true, false,   1,   1,   1, Dyes.dyeGray        , 2, Arrays.asList(new MaterialStack(Arsenic, 1), new MaterialStack(Gallium, 1)));
     public static Materials IndiumGalliumPhosphide  = new Materials( 981, TextureSet.SET_DULL              ,   1.0F,      0,  1, 1|2|4|  16|32|64          , 160, 140, 190,   0,   "IndiumGalliumPhosphide"  ,   "Indium Gallium Phosphide"      ,    0,       0,         -1,    0, false, false,   1,   1,   1, Dyes.dyeLightGray   , 2, Arrays.asList(new MaterialStack(Indium, 1), new MaterialStack(Gallium, 1), new MaterialStack(Phosphorus, 1)));
     public static Materials Spessartine             = new Materials( 838, TextureSet.SET_DULL              ,   1.0F,      0,  2, 1|2|4|  16|32|64          , 255, 100, 100,   0,   "Spessartine"             ,   "Spessartine"                   ,    0,       0,         -1,    0, false, false,   3,   1,   1, Dyes.dyeRed         , 0, Arrays.asList(new MaterialStack(Aluminium, 2), new MaterialStack(Manganese, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12)));
@@ -1845,6 +1848,9 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
                 PigIron,
                 SolderingAlloy,
                 SolderingAlloyMK2,
+                SolderingAlloyMK3,
+                SolderingAlloyMK4,
+                SolderingAlloyMK5,
                 StainlessSteel,
                 Steel,
                 Ultimet,
@@ -1980,6 +1986,12 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         SOLDERING_MAP.put(SolderingAlloy, 1.0f);
         SolderingAlloyMK2.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
         SOLDERING_MAP.put(SolderingAlloyMK2, 2.0f);
+        SolderingAlloyMK3.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
+        SOLDERING_MAP.put(SolderingAlloyMK3, 3.0f);
+        SolderingAlloyMK4.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
+        SOLDERING_MAP.put(SolderingAlloyMK4, 4.0f);
+        SolderingAlloyMK5.add(SubTag.MORTAR_GRINDABLE, SubTag.SOLDERING_MATERIAL);
+        SOLDERING_MAP.put(SolderingAlloyMK5, 5.0f);
 
         Cheese.add(SubTag.SMELTING_TO_FLUID);
         Sugar.add(SubTag.SMELTING_TO_FLUID);

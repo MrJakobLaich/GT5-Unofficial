@@ -328,7 +328,6 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.ShadowSteel,
                 Materials.Silicon,
                 Materials.Silver,
-                Materials.SolderingAlloy,
                 Materials.StainlessSteel,
                 Materials.Steel,
                 Materials.SteelMagnetic,
@@ -420,6 +419,25 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Blaze,
                 Materials.Cryolite
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS11);
+
+        // Yeah, I really did add an extra block for all the soldering alloys LMAO
+        GregTech_API.sBlockSolderingAlloy = new GT_Block_Metal("gt.BlockSolderingAlloyMetal", new Materials[]{
+                Materials.SolderingAlloyMK1,
+                Materials.SolderingAlloyMK2,
+                Materials.SolderingAlloyMK3,
+                Materials.SolderingAlloyMK4,
+                Materials.SolderingAlloyMK5,
+                Materials.SolderingAlloyMK6,
+                Materials.SolderingAlloyMK7,
+                Materials.SolderingAlloyMK8,
+                Materials.SolderingAlloyMK9,
+                Materials.SolderingAlloyMK10,
+                Materials.SolderingAlloyMK11,
+                Materials.SolderingAlloyMK12,
+                Materials.SolderingAlloyMK13,
+                Materials.SolderingAlloyMK14,
+                Materials.SolderingAlloyMK15
+        }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_SA1);
 
         GregTech_API.sBlockReinforced = new GT_Block_Reinforced("gt.blockreinforced");
 

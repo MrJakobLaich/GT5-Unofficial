@@ -285,7 +285,7 @@ public class GregTech_API {
             sBlockOresUb2,
             sBlockOresUb3,
     /*sBlockGem,*/
-    sBlockMetal1,
+            sBlockMetal1,
             sBlockMetal2,
             sBlockMetal3,
             sBlockMetal4,
@@ -296,7 +296,8 @@ public class GregTech_API {
             sBlockGem1,
             sBlockGem2,
             sBlockGem3,
-            sBlockReinforced;
+            sBlockReinforced,
+            sBlockSolderingAlloy;
     public static Block
             sBlockGranites,
             sBlockConcretes,

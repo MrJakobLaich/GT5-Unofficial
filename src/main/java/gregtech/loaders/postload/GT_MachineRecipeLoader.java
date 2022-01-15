@@ -145,7 +145,7 @@ public class GT_MachineRecipeLoader implements Runnable {
 
         GT_Values.RA.addMixerRecipe(
                 GT_OreDictUnificator.get(OrePrefixes.dust, Materials.SolderingAlloyMK4, 1L),
-                GT_OreDictUnificator.get(OrePrefixes.dust, Materials.SuperconductorHV, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Utility.getIntegratedCircuit(1), GT_Values.NF, GT_Values.NF,
+                GT_OreDictUnificator.get(OrePrefixes.dust, Materials.SuperconductorEV, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Utility.getIntegratedCircuit(1), GT_Values.NF, GT_Values.NF,
                 GT_OreDictUnificator.getDust(Materials.SolderingAlloyMK6, OrePrefixes.dust.mMaterialAmount), (int) (100L * OrePrefixes.dust.mMaterialAmount / 3628800L), 48);
         GT_Values.RA.addPulveriserRecipe(
                 GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.SolderingAlloyMK6, 1L),
